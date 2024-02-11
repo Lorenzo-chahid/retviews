@@ -1,0 +1,62 @@
+[
+    {
+      "name": "Blue Jeans 1",
+      "description": "Comfortable blue jeans, perfect for everyday wear.",
+      "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "category": "Pants"
+    },
+    {
+      "name": "Casual T-Shirt 1",
+      "description": "Soft and casual T-shirt for a relaxed look.",
+      "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "category": "Shirt"
+    },
+    {
+      "name": "Leather Jacket 1",
+      "description": "Stylish leather jacket for a bold statement.",
+      "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "category": "Jacket"
+    },
+    {
+      "name": "Running Shoes 1",
+      "description": "Durable and comfortable running shoes for active lifestyles.",
+      "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "category": "Shoes"
+    },
+    {
+      "name": "Knitted Sweater 1",
+      "description": "Warm and cozy knitted sweater for chilly days.",
+      "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "category": "Sweater"
+    },
+    {
+        "name": "Blue Jeans 1",
+        "description": "Comfortable blue jeans, perfect for everyday wear.",
+        "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "category": "Pants"
+      },
+      {
+        "name": "Casual T-Shirt 1",
+        "description": "Soft and casual T-shirt for a relaxed look.",
+        "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "category": "Shirt"
+      },
+      {
+        "name": "Leather Jacket 1",
+        "description": "Stylish leather jacket for a bold statement.",
+        "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "category": "Jacket"
+      },
+      {
+        "name": "Running Shoes 1",
+        "description": "Durable and comfortable running shoes for active lifestyles.",
+        "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "category": "Shoes"
+      },
+      {
+        "name": "Knitted Sweater 1",
+        "description": "Warm and cozy knitted sweater for chilly days.",
+        "image_url": "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "category": "Sweater"
+      }
+  ]

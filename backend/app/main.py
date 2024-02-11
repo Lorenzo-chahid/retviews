@@ -1,3 +1,5 @@
+import json
+from typing import List
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
@@ -42,6 +44,30 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def populate_db_with_clothing_data(db: Session):
+    with open("./clothing_data.json") as file:
+        data = json.load(file)
+        for item_data in data:
+            category = (
+                db.query(models.ClothingCategory)
+                .filter(models.ClothingCategory.name == item_data["category"])
+                .first()
+            )
+            if not category:
+                category = models.ClothingCategory(name=item_data["category"])
+                db.add(category)
+                db.commit()
+
+            item = models.ClothingItem(
+                name=item_data["name"],
+                description=item_data["description"],
+                image_url=item_data["image_url"],
+                category=category,
+            )
+            db.add(item)
+        db.commit()
 
 
 def verify_password(plain_password, hashed_password):
@@ -99,3 +125,14 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Username already registered")
     return crud.create_user(db=db, user=user)
+
+
+@app.get("/clothing-items/", response_model=List[schemas.ClothingItem])
+def read_clothing_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    clothing_items = crud.get_clothing_items(db, skip=skip, limit=limit)
+    return clothing_items
+
+
+db = database.SessionLocal()
+populate_db_with_clothing_data(db)
+db.close()

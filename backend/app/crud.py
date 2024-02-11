@@ -22,3 +22,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+def get_clothing_items(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.ClothingItem).offset(skip).limit(limit).all()

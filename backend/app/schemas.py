@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class UserBase(BaseModel):
@@ -20,3 +21,21 @@ class User(UserBase):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+
+class ClothingCategoryBase(BaseModel):
+    name: str
+
+
+class ClothingItemBase(BaseModel):
+    name: str
+    description: Optional[str] = None
+    image_url: Optional[str] = None
+
+
+class ClothingItem(ClothingItemBase):
+    id: Optional[int] = None
+    category: ClothingCategoryBase
+
+    class Config:
+        orm_mode = True

@@ -46,6 +46,27 @@ def get_db():
         db.close()
 
 
+def get_current_user(
+    db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
+):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+    user = crud.get_user_by_username(db, username=username)
+    if user is None:
+        raise credentials_exception
+    return user
+
+
 def populate_db_with_clothing_data(db: Session):
     with open("./clothing_data.json") as file:
         data = json.load(file)
@@ -128,7 +149,13 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/clothing-items/", response_model=List[schemas.ClothingItem])
-def read_clothing_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_clothing_items(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user),
+):
+    # Ici, vous pouvez utiliser `current_user` si vous avez besoin de filtrer les résultats en fonction de l'utilisateur
     clothing_items = crud.get_clothing_items(db, skip=skip, limit=limit)
     return clothing_items
 

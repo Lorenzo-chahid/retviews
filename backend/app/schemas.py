@@ -38,4 +38,4 @@ class ClothingItem(ClothingItemBase):
     category: ClothingCategoryBase
 
     class Config:
-        orm_mode = True
+        from_attributes = True

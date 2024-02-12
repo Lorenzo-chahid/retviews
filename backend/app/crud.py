@@ -47,7 +47,7 @@ def create_clothing_item(db: Session, clothing_item: schemas.ClothingItemCreate)
         description=clothing_item.description,
         image_url=clothing_item.image_url,
         category_id=clothing_item.category_id,
-        user_id=2,
+        user_id=clothing_item.user_id,
     )
     db.add(db_item)
     db.commit()

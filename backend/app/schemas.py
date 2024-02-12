@@ -3,7 +3,6 @@ from typing import Optional, List
 
 
 class UserBase(BaseModel):
-    id: int
     username: str
     email: str
 
@@ -22,6 +21,7 @@ class User(UserBase):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    user_id: int
 
 
 class ClothingCategoryBase(BaseModel):

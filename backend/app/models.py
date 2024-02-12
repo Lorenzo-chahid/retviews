@@ -46,6 +46,3 @@ class User(Base):
 def recreate_database():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
-
-
-recreate_database()

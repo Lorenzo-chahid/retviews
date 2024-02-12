@@ -133,15 +133,14 @@ async def login_for_access_token(
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user.username, "id": user.id},
+        data={"sub": user.username},
         expires_delta=access_token_expires,
     )
-    print("HERE MOTHERFUCKER ::", user.id)
     return {
-        "user_id": user.id,
         "access_token": access_token,
         "token_type": "bearer",
-    }  # Retournez l'ID de l'utilisateur dans la réponse
+        "user_id": user.id,  # Incluez l'ID utilisateur ici
+    }
 
 
 @app.post("/users/", response_model=schemas.User)

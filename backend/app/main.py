@@ -124,7 +124,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 async def login_for_access_token(
     db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ):
-    print("CHIPPOS")
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -134,10 +133,15 @@ async def login_for_access_token(
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user.username},
+        data={"sub": user.username, "id": user.id},
         expires_delta=access_token_expires,
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    print("HERE MOTHERFUCKER ::", user.id)
+    return {
+        "user_id": user.id,
+        "access_token": access_token,
+        "token_type": "bearer",
+    }  # Retournez l'ID de l'utilisateur dans la réponse
 
 
 @app.post("/users/", response_model=schemas.User)
@@ -151,13 +155,40 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 @app.get("/clothing-items/", response_model=List[schemas.ClothingItem])
 def read_clothing_items(
     skip: int = 0,
-    limit: int = 100,
+    limit: int = 1000,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user),
 ):
-    # Ici, vous pouvez utiliser `current_user` si vous avez besoin de filtrer les résultats en fonction de l'utilisateur
+
     clothing_items = crud.get_clothing_items(db, skip=skip, limit=limit)
+    for item in clothing_items:
+        print(item.name)
     return clothing_items
+
+
+@app.get("/clothing-items/{item_id}/", response_model=schemas.ClothingItem)
+def read_clothing_item(item_id: int, db: Session = Depends(get_db)):
+    db_item = crud.get_clothing_item_by_id(db, item_id=item_id)
+    if db_item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return db_item
+
+
+@app.get("/clothing-categories/", response_model=List[schemas.ClothingCategory])
+def read_categories(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    print("CATEGORY CHOOSE")
+    categories = crud.get_categories(db, skip=skip, limit=limit)
+    return categories
+
+
+@app.post(
+    "/new-clothing/", response_model=schemas.ClothingItem
+)  # URL harmonisée avec Angular
+def create_clothing_item(
+    clothing_item: schemas.ClothingItemCreate,  # Utilisez un schéma qui inclut user_id et category_id
+    db: Session = Depends(get_db),
+):
+    return crud.create_clothing_item(db=db, clothing_item=clothing_item)
 
 
 db = database.SessionLocal()

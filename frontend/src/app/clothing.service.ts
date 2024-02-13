@@ -59,4 +59,9 @@ getClothingCategories(): Observable<any[]> {
 getClothingItemById(id: number): Observable<ClothingItem> {
   return this.http.get<ClothingItem>(`${this.baseUrl}/clothing-items/${id}`);
 }
+
+updateItem(itemId: number, itemData: any, httpOptions?: any): Observable<any> {
+  return this.http.put(`${this.baseUrl}/edit-clothing/${itemId}`, itemData, httpOptions);
+}
+
 }

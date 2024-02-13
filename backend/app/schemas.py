@@ -15,7 +15,7 @@ class User(UserBase):
     id: int
 
     class Config:
-        from_attributes = True  # Correction ici
+        from_attributes = True
 
 
 class Token(BaseModel):
@@ -42,16 +42,13 @@ class ClothingItemBase(BaseModel):
     category_id: int
 
 
-# Si vous avez besoin d'un schéma pour créer un ClothingItem, incluant user_id
 class ClothingItemCreate(ClothingItemBase):
     user_id: int
 
 
 class ClothingItem(ClothingItemBase):
     id: int
-    category: Optional[
-        ClothingCategory
-    ]  # Référence au schéma de catégorie pour inclure les détails de la catégorie
+    category: Optional[ClothingCategory]
 
     class Config:
-        from_attributes = True  # Correction ici
+        from_attributes = True

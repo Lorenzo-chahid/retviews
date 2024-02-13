@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from .database import Base, engine
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -20,6 +21,7 @@ class ClothingItem(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
     description = Column(String, index=True, nullable=True)
     image_url = Column(String, nullable=True)
     category_id = Column(Integer, ForeignKey("clothing_categories.id"))

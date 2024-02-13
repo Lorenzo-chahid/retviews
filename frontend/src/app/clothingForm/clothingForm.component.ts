@@ -21,7 +21,6 @@ export class ClothingFormComponent implements OnInit {
       description: [''],
       image_url: [''],
       category_id: ['', Validators.required]
-      // Supprimez la ligne pour user_id
     });
   }
 

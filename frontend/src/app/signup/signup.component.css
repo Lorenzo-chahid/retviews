@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Utilisez 100vh pour que le conteneur prenne toute la hauteur de la fenêtre du navigateur */
+    min-height: 100vh;
   }
   
 
   .box {
-    width: 50%; /* ou la largeur que vous préférez */
-    max-width: 500px; /* pour s'assurer qu'il ne devienne pas trop large sur les grands écrans */
-    margin: auto; /* pour centrer la carte dans le conteneur flex si nécessaire */
+    width: 50%;
+    max-width: 500px; 
+    margin: auto;
   }
   

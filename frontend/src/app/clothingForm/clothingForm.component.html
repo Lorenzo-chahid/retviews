@@ -1,6 +1,5 @@
 <form [formGroup]="clothingForm" (ngSubmit)="onSubmit()" class="box">
 
-    <!-- Nom de l'article -->
     <div class="field">
         <label class="label" for="name">Nom</label>
         <div class="control">
@@ -8,7 +7,6 @@
         </div>
     </div>
 
-    <!-- Description -->
     <div class="field">
         <label class="label" for="description">Description</label>
         <div class="control">
@@ -17,7 +15,6 @@
         </div>
     </div>
 
-    <!-- URL de l'image -->
     <div class="field">
         <label class="label" for="image_url">URL de l'image</label>
         <div class="control">
@@ -25,7 +22,6 @@
         </div>
     </div>
 
-    <!-- Catégorie -->
     <div class="field">
         <label class="label" for="category">Catégorie</label>
         <div class="control">
@@ -38,14 +34,12 @@
         </div>
     </div>
 
-    <!-- Utilisateur (Caché si l'ID de l'utilisateur est géré automatiquement) -->
     <div class="field" style="display: none;">
         <div class="control">
             <input class="input" type="hidden" formControlName="user_id">
         </div>
     </div>
 
-    <!-- Bouton de soumission -->
     <div class="field">
         <div class="control">
             <button type="submit" class="button is-primary">Ajouter l'article</button>

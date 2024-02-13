@@ -2,16 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Utilisez toute la hauteur de la vue */
+    height: 100vh;
   }
   
   .card {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 20px;
-    width: 50%; /* ou la largeur que vous préférez */
+    width: 50%; 
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile pour la carte */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .form-group {
@@ -19,11 +19,11 @@
   }
   
   .form-actions {
-    text-align: right; /* Aligner les boutons à droite */
-    padding-top: 10px; /* Espace au-dessus des boutons */
+    text-align: right;
+    padding-top: 10px;
   }
   
   .btn {
-    margin: 5px; /* Espace autour des boutons */
+    margin: 5px;
   }
   

@@ -23,6 +23,6 @@ export class ClothingListComponent implements OnInit {
   goToDetail(id: number): void {
     console.log("GO DETAILS !")
     console.log("ID :: ",id)
-    this.router.navigate(['/detail', id]); // Utilisez le chemin et les paramètres correspondant à votre configuration de routage
+    this.router.navigate(['/detail', id]);
   }
 }

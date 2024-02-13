@@ -1,0 +1,10 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'bulma/css/bulma.min.css';
+body {
+    background-color: #212E53;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

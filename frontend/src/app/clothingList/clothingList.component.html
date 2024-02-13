@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="columns is-multiline" style="display: flex; flex-wrap: wrap;">
+        <div *ngFor="let item of clothingItems" class="column is-one-quarter-desktop is-half-tablet"
+            style="display: flex;">
+            <div class="card" style="width: 100%; display: flex; flex-direction: column;">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img [src]="item.image_url" alt="Image of {{ item.name }}">
+                    </figure>
+                </div>
+                <div class="card-content" style="flex-grow: 1;">
+                    <p class="title is-4">{{ item.name }}</p>
+                    <p class="content">{{ item.description }}</p>
+                    <p class="category">Category: {{ item.category.name }}</p>
+                </div>
+                <footer class="card-footer" style="margin-top: auto;">
+                    <a class="card-footer-item" (click)="goToDetail(item.id)">
+                        <span class="icon">
+                            <i class="fas fa-edit"></i>
+                        </span>
+
+                        Modifier
+                    </a>
+                    <a href="#" class="card-footer-item">
+                        <span class="icon">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        Supprimer
+                    </a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/new" class="button is-primary is-rounded floating-btn">
+    <span class="icon">
+        <i class="fas fa-plus"></i>
+    </span>
+</a>

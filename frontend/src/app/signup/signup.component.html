@@ -1,0 +1,43 @@
+<div class="signup-container box">
+    <h2 class="title">Sign Up</h2>
+    <form (ngSubmit)="onSignup()">
+        <div class="field">
+            <label for="username" class="label">Username:</label>
+            <div class="control has-icons-left">
+                <input type="text" id="username" [(ngModel)]="user.username" name="username" class="input"
+                    placeholder="Enter your username" required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="email" class="label">Email:</label>
+            <div class="control has-icons-left">
+                <input type="email" id="email" [(ngModel)]="user.email" name="email" class="input"
+                    placeholder="Enter your email" required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="password" class="label">Password:</label>
+            <div class="control has-icons-left">
+                <input type="password" id="password" [(ngModel)]="user.password" name="password" class="input"
+                    placeholder="Enter your password" required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</div>

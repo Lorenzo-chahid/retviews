@@ -1,0 +1,36 @@
+<div class="card-wrapper">
+    <div class="card">
+        <div *ngIf="item">
+            <form>
+                <div class="form-group">
+                    <label for="itemName">Nom</label>
+                    <input type="text" class="form-control" id="itemName" [(ngModel)]="item.name" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDescription">Description</label>
+                    <textarea class="form-control" id="itemDescription" [(ngModel)]="item.description"
+                        name="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemImageUrl">URL de l'image</label>
+                    <input type="text" class="form-control" id="itemImageUrl" [(ngModel)]="item.image_url"
+                        name="image_url">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCategory">Catégorie</label>
+                    <input type="text" class="form-control" id="itemCategory" [(ngModel)]="item.category.name"
+                        name="category_name">
+                </div>
+
+                <!-- Boutons en bas de la carte -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
